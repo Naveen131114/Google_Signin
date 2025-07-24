@@ -21,10 +21,8 @@ google = oauth.register(
     name='google',
     client_id=app.config["GOOGLE_OAUTH_CLIENT_ID"],
     client_secret=app.config["GOOGLE_OAUTH_CLIENT_SECRET"],
-    server_metadata_url='https://accounts.google.com/.well-known/openid-configuration',
-    client_kwargs={
-        'scope': 'openid email profile',
-    }
+    server_metadata_url=app.config["SERVER_METADATAT_URL"],
+    client_kwargs=app.config["CLIENT_KWARGS"]
 )
 
 # Define User model
@@ -71,7 +69,7 @@ def authorize():
         db.session.add(user)
         db.session.commit()
 
-    return redirect('/')
+    return redirect(app.config['FRONTEND_URL'])
 
 
 @app.route('/logout')
