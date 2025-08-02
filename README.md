@@ -39,7 +39,7 @@ git clone https://github.com/Naveen131114/Google_Signin.git
 
 ```bash
 python -m venv venv
-source venv/bin/activate     # On Windows: venv\Scripts\activate
+source venv/Scripts/activate     # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
@@ -53,6 +53,8 @@ SECRET_KEY=your_secret_key
 DATABASE_URL=mysql+pymysql://root:@localhost/google_signin
 GOOGLE_OAUTH_CLIENT_ID=your_client_id.apps.googleusercontent.com
 GOOGLE_OAUTH_CLIENT_SECRET=your_client_secret
+
+FRONTEND_URL=your_frontend_url_for_after_login
 ```
 
 ---

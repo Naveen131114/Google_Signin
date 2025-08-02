@@ -1,13 +1,13 @@
+from dotenv import load_dotenv
+load_dotenv()
 from flask import Flask, redirect, url_for, session, jsonify
 from authlib.integrations.flask_client import OAuth
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from dotenv import load_dotenv
 import os
 from config import Config
 
 # Load environment variables from .env
-load_dotenv()
 
 app = Flask(__name__)
 app.config.from_object(Config)  # ✅ Load from config.py
@@ -78,5 +78,6 @@ def logout():
     return redirect('/')
 
 if __name__ == '__main__':
-    db.create_all()
+    with app.app_context():
+        db.create_all()  # Or better: use flask db migrate/upgrade
     app.run(debug=True)
